@@ -1,0 +1,5 @@
+package com.ocow.back.model;
+
+public class Vehicle_Category {
+
+}

@@ -1,0 +1,67 @@
+package com.ocow.back.mapper;
+
+import com.ocow.back.dto.ClientUserDto;
+import com.ocow.back.model.ClientUser;
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.processing.Generated;
+import org.springframework.stereotype.Component;
+
+@Generated(
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2023-12-09T17:28:25+0100",
+    comments = "version: 1.5.1.Final, compiler: Eclipse JDT (IDE) 3.34.0.v20230523-1233, environment: Java 17.0.7 (Eclipse Adoptium)"
+)
+@Component
+public class ClientUserMapperImpl implements ClientUserMapper {
+
+    @Override
+    public ClientUserDto toDto(ClientUser entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        ClientUserDto clientUserDto = new ClientUserDto();
+
+        return clientUserDto;
+    }
+
+    @Override
+    public List<ClientUserDto> toDto(List<ClientUser> entity) {
+        if ( entity == null ) {
+            return null;
+        }
+
+        List<ClientUserDto> list = new ArrayList<ClientUserDto>( entity.size() );
+        for ( ClientUser clientUser : entity ) {
+            list.add( toDto( clientUser ) );
+        }
+
+        return list;
+    }
+
+    @Override
+    public ClientUser toEntity(ClientUserDto dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        ClientUser clientUser = new ClientUser();
+
+        return clientUser;
+    }
+
+    @Override
+    public List<ClientUser> toEntity(List<ClientUserDto> dto) {
+        if ( dto == null ) {
+            return null;
+        }
+
+        List<ClientUser> list = new ArrayList<ClientUser>( dto.size() );
+        for ( ClientUserDto clientUserDto : dto ) {
+            list.add( toEntity( clientUserDto ) );
+        }
+
+        return list;
+    }
+}

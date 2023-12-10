@@ -1,7 +1,6 @@
 package com.ocow.back.security;
 
-import java.util.Collection;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -25,14 +24,10 @@ public class UserDetailsImpl implements UserDetails {
   
   private String lastName;
 
-  private Boolean admin;
+  private List<GrantedAuthority> authorities;
 
   //@JsonIgnore
   private String password;  
-  
-  public Collection<? extends GrantedAuthority> getAuthorities() {        
-      return new HashSet<GrantedAuthority>();
-  }
 
   @Override
   public boolean isAccountNonExpired() {
@@ -62,5 +57,5 @@ public class UserDetailsImpl implements UserDetails {
       return false;
     UserDetailsImpl user = (UserDetailsImpl) o;
     return Objects.equals(id, user.id);
-  } 
+  }
 }

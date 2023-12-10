@@ -1,0 +1,8 @@
+package com.ocow.back.model;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Rental {
+
+}

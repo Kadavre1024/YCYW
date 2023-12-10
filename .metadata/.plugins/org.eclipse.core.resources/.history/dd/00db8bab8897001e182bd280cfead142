@@ -1,0 +1,18 @@
+package com.ocow.back.dto;
+
+import java.util.List;
+
+import lombok.Data;
+import lombok.NonNull;
+
+@Data
+public class DiscussionDto {
+
+	@NonNull
+	private String subject;
+	
+	@NonNull
+	private Long clientUserId;
+	
+	private Long rentalId;
+}

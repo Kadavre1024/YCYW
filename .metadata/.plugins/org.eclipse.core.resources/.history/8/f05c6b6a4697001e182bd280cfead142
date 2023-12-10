@@ -1,0 +1,5 @@
+package com.ocow.back.repository;
+
+public interface RentalRepository {
+
+}

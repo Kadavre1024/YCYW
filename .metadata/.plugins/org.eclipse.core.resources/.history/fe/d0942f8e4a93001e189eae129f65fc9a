@@ -1,0 +1,5 @@
+package com.ocow.back.security;
+
+public class WebSecurityConfig {
+
+}

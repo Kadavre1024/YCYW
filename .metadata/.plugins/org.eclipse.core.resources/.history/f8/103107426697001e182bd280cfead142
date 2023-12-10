@@ -1,0 +1,31 @@
+package com.ocow.back.mapper;
+
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.ocow.back.dto.MessageDto;
+import com.ocow.back.model.Discussion;
+import com.ocow.back.model.Message;
+import com.ocow.back.service.DiscussionService;
+
+@Component
+@Mapper(componentModel="spring", uses = {DiscussionService.class}, imports = {Discussion.class})
+public abstract class MessageMapper implements EntityMapper<MessageDto, Message> {
+
+	@Autowired
+	DiscussionService discussionService;
+	
+	@Mappings({
+        @Mapping(target = "discussion", expression = "java(messageDto.getDiscussionId() != null ? this.discussionService.findById(messageDto.getDiscussionId()) : null)"),
+	})
+	public abstract Message toEntity(MessageDto messageDto);
+
+
+	@Mappings({
+        @Mapping(source = "message.discussion.id", target = "discussionId"),
+	})
+	public abstract MessageDto toDto(Message message);
+}

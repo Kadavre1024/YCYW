@@ -9,10 +9,15 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 @Entity
+@Table(name = "MESSAGES")
 public class Message {
 
 	@Id
@@ -20,10 +25,20 @@ public class Message {
 	@Column
 	private Long id;
 	
+	@NonNull
+	@ManyToOne
+	@JoinColumn(name = "discussion_id", referencedColumnName = "id")
 	private Discussion discussion;
 	
-	private User emitterId;
+	@ManyToOne
+	@JoinColumn(name = "client_user_id", referencedColumnName = "id")
+	private ClientUser clientUser;
 	
+	@ManyToOne
+	@JoinColumn(name = "support_user_id", referencedColumnName = "id")
+	private SupportUser SupportUser;
+	
+	@NonNull
 	private String message;
 	
 	@CreationTimestamp

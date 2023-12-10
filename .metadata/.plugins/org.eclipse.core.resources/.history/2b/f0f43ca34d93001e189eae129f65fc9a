@@ -1,0 +1,5 @@
+package com.ocow.back.mapper;
+
+public interface EntityMapper {
+
+}

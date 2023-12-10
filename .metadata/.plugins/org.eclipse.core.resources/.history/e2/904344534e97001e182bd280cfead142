@@ -1,0 +1,17 @@
+package com.ocow.back.mapper;
+
+import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
+
+import com.ocow.back.dto.DiscussionDto;
+import com.ocow.back.model.Agency;
+import com.ocow.back.model.Discussion;
+import com.ocow.back.model.Rental;
+import com.ocow.back.service.ClientUserService;
+import com.ocow.back.service.RentalService;
+
+@Component
+@Mapper(componentModel="spring", uses = {RentalService.class, ClientUserService.class}, imports = {Rental.class, ClientUser.class})
+public abstract class DiscussionMapper implements EntityMapper<DiscussionDto, Discussion>{
+
+}

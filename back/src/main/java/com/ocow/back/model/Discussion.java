@@ -6,15 +6,19 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.Data;
 import lombok.NonNull;
 
 @Data
+@Entity
+@Table(name = "DISCUSSIONS")
 public class Discussion {
 
 	@Id
@@ -23,16 +27,17 @@ public class Discussion {
 	private Long id;
 	
 	@NonNull
-	@OneToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private User user;
+	@ManyToOne
+	@JoinColumn(name = "client_user_id", referencedColumnName = "id")
+	private ClientUser clientUser;
 	
 	@NonNull
 	private String subject;
 	
-	@OneToOne
+	@NonNull
+	@ManyToOne
 	@JoinColumn(name = "rental_id", referencedColumnName = "id")
-	private Rental rental;
+	public Rental rental;
 	
 	@CreationTimestamp
 	@Column(name = "created_at", updatable = false)

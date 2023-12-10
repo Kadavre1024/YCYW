@@ -6,4 +6,6 @@ import com.ocow.back.model.Message;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
+	Message findAllByDiscussionId(Long id);
+
 }
